@@ -1,0 +1,109 @@
+<%- include("../partials/header")%>
+
+	<div class="container new">
+		<div class="jumbotron heading">
+			<h1 class="head">
+				<i class="far fa-edit"></i>
+				 EDIT <%=movie["name"].toUpperCase()%>
+			</h1>
+		</div>
+		
+	</div>
+
+
+	<form method="POST" action="/movies/<%=movie._id%>/edit">
+		<div class="formBody">
+			<div class="form">
+				<input type="text" name="name" autocomplete="off" value="<%=movie.name%>" required>
+				<label for="name" class="labelName">
+					<span class="content">
+						Name
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="poster" id="poster" value="<%=movie.poster%>" autocomplete="off" required>
+				<label for="poster" class="labelName">
+					<span class="content">
+						Poster
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="quality" id="quality" autocomplete="off" value="<%=movie.quality%>" required>
+				<label for="quality" class="labelName">
+					<span class="content">
+						Quality
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="size" id="size" autocomplete="off" value="<%=movie.size%>" required>
+				<label for="size" class="labelName">
+					<span class="content">
+						Size
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="screenshots" id="ss" autocomplete="off" value="<%=movie.screenshots%>" required>
+				<label for="ss" class="labelName">
+					<span class="content">
+						Screenshots
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="trailer" id="trailer" value="<%=movie.trailer%>" autocomplete="off" required>
+				<label for="trailer" class="labelName">
+					<span class="content">
+						Trailer
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="link1" id="link1" autocomplete="off" value="<%=movie.link1%>" required>
+				<label for="link1" class="labelName">
+					<span class="content">
+						Link-1
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="link2" id="link2" autocomplete="off" value="<%=movie.link2%>" required>
+				<label for="link2" class="labelName">
+					<span class="content">
+						Link-2
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="link3" id="link3" autocomplete="off" value="<%=movie.link3%>" required>
+				<label for="link3" class="labelName">
+					<span class="content">
+						Link-3
+					</span>
+				</label>
+			</div>		
+			<div class="form">
+				<input type="text" name="torrent" id="torrent" autocomplete="off" value="<%=movie.torrent%>" required>
+				<label for="torrent" class="labelName">
+					<span class="content">
+						Torrent
+					</span>
+				</label>
+			</div>
+			<div class="form">
+				<input type="text" name="type" id="type" autocomplete="off" value="<%=movie.type%>" required>
+				<label for="type" class="labelName">
+					<span class="content">
+						Type
+					</span>
+				</label>
+			</div>
+			<button type="submit" class="btn btn-outline-danger btn-lg btn-form">UPDATE</button>
+		</div>
+	</form>
+
+
+<%- include("../partials/footer")%>

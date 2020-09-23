@@ -1,0 +1,215 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+body{
+	margin:0;
+	padding:0;
+	height:100vh;
+	background: black;
+	background-repeat:no-repeat;
+	background-size:cover;
+	overflow-x: hidden;
+}
+nav h1{
+	width:30%;
+}
+
+nav .cont{
+	margin:0;
+}
+
+nav a{
+	text-decoration: none;
+	color:#eee;
+}
+
+nav a:hover{
+	text-decoration: none;
+	color:#eee;
+}
+
+nav div{
+	justify-content: space-between;
+	display:flex;
+	margin-top:1rem;
+}
+
+.brand:hover{
+	text-decoration: none;
+}
+
+
+.brand{
+	padding-top:0.6rem;
+	height:60px;
+	margin:0;
+	font-family: 'Ranchers', cursive;
+	letter-spacing: 3px;
+	margin-left:5%;
+	font-size:2rem;
+	font-weight:400;
+}
+
+.brand span{
+	font-family: 'Ranchers', cursive;
+	color:crimson;
+}
+
+.navLinks{
+	margin-right:5%;
+}
+
+nav{
+	position:relative;
+	background-color:rgba(0,0,0,1);
+	z-index: 5000;
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	height:60px;
+	transition:all 0.25s;
+}
+
+nav ul{
+	padding-top: 1rem;
+	list-style: none;
+	height:100%;
+	display:flex;
+	align-items: center;
+}
+
+nav ul li a{
+	padding:0.3rem 0;
+	position:relative;
+	font-size:1rem;
+	letter-spacing: 2px;
+	margin:0 3rem;
+
+}
+
+nav ul li a:last-child{
+	margin-right:0;
+}
+
+nav ul li a::before{
+	content:'';
+	width:100%;
+	height:2.5px;
+	position:absolute;
+	left:0;
+	background-color:crimson;
+	transform:scaleX(0);
+	transition:all 0.5s;
+}
+nav ul li a::after{
+	content:'';
+	width:100%;
+	height:2.5px;
+	position:absolute;
+	left:0;
+	background-color:crimson;
+	transform:scaleX(0);
+	transition:all 0.5s;
+}
+
+nav ul li a::before{
+	top:0;
+	transform-origin:left;
+}
+nav ul li a::after{
+	bottom:0;
+	transform-origin:right;
+}
+
+nav ul li a:hover::before,nav ul li a:hover::after{
+	transform:scaleX(1);
+}
+
+.hamburger{
+	padding-top:0.8rem;
+	margin:0 5%;
+	display:block;
+    display:none;
+}
+.hamburger div{
+    width:25px;
+    height:3px;
+    margin:5px;
+    background:white;
+    transition:all 0.3s ease;
+}
+
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px,6px);
+}
+.toggle .line2{
+    opacity:0;
+}
+.toggle .line3{
+    transform: rotate(45deg) translate(-5px,-6px);
+}
+
+@media screen and (max-width:870px){
+	nav ul li a{
+		font-size:0.8rem;
+	}
+}
+
+@media screen and (max-width:766px){
+    body{
+        overflow-x:hidden;
+	}
+	.brand{
+		z-index:5001;
+	}
+    .hamburger{
+    	z-index:5001;
+        display:block;
+        cursor:pointer;
+    }
+    .navLinks{
+    	position:fixed;
+    	background:rgba(0,0,0,1);
+    	height:100vh;
+    	width:100%;
+    	flex-direction:column;
+    	justify-content:space-around;
+    	align-items:center;
+    	clip-path: circle(10px at 90% -10%);
+    	transition:all 0.75s ease-out;
+    	pointer-events: none;
+    }
+	.navItems{
+		text-align:center;
+	}
+    .navLinks.open{
+    	clip-path: circle(1100px at 90% -10%);
+    	pointer-events: all;
+		overflow-y:hidden;
+    }
+    .color{
+    	background-color: rgba(0,0,0,0);
+    	transition:all 0.5s;
+    }
+    .navLinks li a{
+    	font-size:25px;
+    }
+    .navLinks li a:nth-child(1){
+    	transition:all 0.5s ease 0.2s;
+    }
+    .navLinks li a:nth-child(2){
+    	transition:all 0.5s ease 0.4s;
+    }
+    .navLinks li a:nth-child(3){
+    	transition:all 0.5s ease 0.6s;
+    }
+    .navLinks li a:nth-child(4){
+    	transition:all 0.5s ease 0.8s;
+    }
+	nav ul li a{
+		margin:0;
+	}
+}
+

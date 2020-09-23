@@ -1,0 +1,114 @@
+<%- include("../partials/header")%>
+
+<div class="container new">
+	<div class="jumbotron heading1">
+		<h1 class="movieName">
+			<%=movie.name%>
+		</h1>
+		
+		<div id="poster">
+			<%if(data.Poster){%>
+				<img src="<%=data.Poster%>" class="poster">
+			<%}else{%>
+				<img src="<%=movie.poster%>" class="poster dbposter">
+			<%}%>
+		</div>
+		
+		<div class="information">
+			<p> <strong>IMDB Rating :-</strong> <%=data.imdbRating%> </p>
+			<p>
+				<strong>Director :-</strong> <%=data.Director%>
+			</p>
+			<p>
+				<strong>Release Date :-</strong> <%=data.Released%>
+			</p>
+			<p>
+				<strong>Genre :-</strong> <%=data.Genre%>
+			</p>
+			<p>
+				<strong>Actors :- </strong> <%=data.Actors%>
+			</p>
+			<p>
+				<strong>Quality :- </strong> <%=movie.quality%>
+			</p>
+			<p>
+				<strong>File Size :- </strong> <%=movie.size%>
+			</p>
+			<p>
+				<strong>Plot :- </strong> <%=data.Plot%>
+			</p>
+			<img src="<%=movie.screenshots%>" class="screenshot">
+			<%var x=movie["trailer"].slice(38,)%>
+			<iframe src="<%=x.split(" ")[0].slice(0,-1)%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe>
+		</div>
+		<%if(currentUser && currentUser.isAdmin){%>
+			<div class="edit-btns">
+				<a class="btn btn-sm btn-outline-warning" href="/movies/<%=id%>/edit">
+					<i class="far fa-edit"></i> EDIT
+				</a>
+				<form action="/movies/<%=id%>/delete" method="POST" class="del-movie">
+					<button type="submit" class="btn btn-sm btn-outline-danger">
+						<i class="far fa-trash-alt"></i> DELETE
+					</button>	
+				</form>
+			</div>		
+		<%}%>
+	</div>
+	
+	<div class="container downloadLinks">
+		<a href="<%=movie.link1%>" class="btn dbtn btn-success">DOWNLOAD LINK 1</a>	
+		<a href="<%=movie.link2%>" class="btn dbtn btn-success">DOWNLOAD LINK 2</a>	
+		<a href="<%=movie.link3%>" class="btn dbtn btn-success">DOWNLOAD LINK 3</a>	
+		<a href="<%=movie.torrent%>" class="btn dbtn btn-info">TORRENT LINK</a>	
+	</div>
+	<div class="container">
+		<div class="well">
+			<h2>
+				<i class="fas fa-comments"></i> COMMENTS
+			</h2>
+			<hr>
+			<button class="btn btn-lg btn-outline-primary add-comment">
+				ADD COMMENTS
+			</button>
+			<div class="comment-form">
+				<form method="POST" action="/movies/<%=id%>/comment">
+					<div class="formBody">
+						<div class="form">
+							<input type="text" name="comment" id="comment" autocomplete="off" required>
+							<label for="comment" class="labelName">
+								<span class="content">
+									Comment
+								</span>
+							</label>
+						</div>
+						<input type="hidden" name="type" value="<%=movie.type%>">
+						<button type="submit" class="btn btn-outline-danger btn-lg comment-form-btn">ADD COMMENT</button>
+					</div>
+				</form>
+				<hr>	
+			</div>
+			<div class="show-comments container comment-cont">
+				<%movie["comments"].reverse()%>
+				<%movie.comments.forEach(function(comment){%>
+					<strong><%=comment.author.username%></strong>
+					<span class="float-right"><%=moment(comment.createdAt).fromNow()%></span>
+					<p>
+						<%=comment.text%>
+					</p>
+					<%if(currentUser && (comment.author.id.equals(currentUser._id) || currentUser.isAdmin)){%>
+						<form action="/movies/<%=id%>/comments/<%=comment._id%>/delete" method="POST">
+							<button type="submit" class="btn btn-sm btn-outline-dark delete">
+								<i class="far fa-trash-alt"></i> DELETE	
+							</button>						
+						</form>
+					<%}%>
+					<hr>
+				<%})%>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+<%- include("../partials/footer")%>

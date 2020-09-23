@@ -1,0 +1,57 @@
+<%- include("../partials/header")%>
+
+<div class="container options1">
+	<div class="categories">
+		<a class="btn btn-sm btn-light" href="/movies/1">Latest Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/bollywood/1">Bollywood Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/hollywood/1">Hollywood Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/punjabi/1">Punjabi Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/animated/1">Animated Movies</a>
+		<div class="search-form">
+			<form action="/search" method="POST">
+				<input type="text" name="search" placeholder="Type to Search" autocomplete="off" required>
+				<button type="submit">
+					SEARCH
+				</button>
+			</form>			
+		</div>
+	</div>	
+</div>
+
+<header class="jumbotron strip font index-strip">
+	<h2 class="latestStrip"><i class="fas fa-search"></i> SEARCH RESULTS</h2>
+</header>
+
+
+<%if(movies.length!==0){%>
+	<div class="row text-center">
+		<% movies.forEach(function(movie){ %>
+			<div class="col-lg-2 col-md-4 col-sm-4 col-6 box">
+				<br>
+				<a href="/movies/show/<%=movie._id%>" class="download">
+					<div class="movie">
+						<img src="<%= movie.poster %>" class="imgPoster thumbnail-wrapper">
+						<span class="font"><%= movie.name %></span>
+						<br>
+						<span class="movieQuality font"><%= movie.quality %></span>
+						<div class="overlay">
+							<div class="download-icon">
+								<i class="fas fa-download"></i>
+							</div>
+							<div class="download-msg">
+								 DOWNLOAD
+							</div>
+						</div>
+					</div>
+
+				</a>
+			</div>
+		<% }) %>
+	</div>
+<%}else{%>
+	<div class="container">
+		<h1 class="no-res"><i class="far fa-sad-tear"></i> Movie Not Found</h1>
+	</div>
+<%}%>
+
+<%- include("../partials/footer")%>

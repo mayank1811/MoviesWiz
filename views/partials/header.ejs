@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MoviesWiz</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/nav.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/form.css">
+	
+	 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Grandstander:ital@1&display=swap" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<div class="cont">
+			<h1 class="brand">
+				<a href="/">Movies<span>Wiz</span></a>
+			</h1>
+			<ul class="navLinks">
+				<li class="navItems"><a href="/">Home</a></li>
+				<%if(!currentUser){%>
+					<li class="navItems"><a href="/signin">Login</a></li>
+					<li class="navItems"><a href="/signup">Sign-up</a></li>
+				<%}else{%>
+					<li class="navItems"><a href=""><%=currentUser.username%></a></li>
+					<li class="navItems"><a href="/signout">Logout</a></li>
+				<%}%>
+				<li class="navItems"><a href="/contact">Contact</a></li>
+			</ul>				
+			<div class="hamburger">
+      			<div class="line1"></div>
+      			<div class="line2"></div>
+      			<div class="line3"></div>
+    		</div>
+		</div>
+	</nav>	
+	
+	<%if(error && error.length>0){%>
+		<div class="container option1 msg">
+			<div class="alert alert-danger">
+				<%=error%>
+			</div>	
+		</div>
+	<%}%>
+	<%if(success && success.length>0){%>
+		<div class="container option1 msg">
+			<div class="alert alert-success">
+				<%=success%>
+			</div>	
+		</div>
+	<%}%>
+
+	
+	

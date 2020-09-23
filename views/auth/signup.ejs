@@ -1,0 +1,51 @@
+<%- include("../partials/header")%>
+
+	<div class="container new">
+		<div class="jumbotron heading">
+			<h1 class="head">
+				<i class="fas fa-user-plus"></i> 
+				 SIGN-UP
+			</h1>
+		</div>
+	</div>
+
+
+	<form method="POST" action="/signup">
+		<div class="formBody">
+			<div class="form">
+				<input type="text" name="username" id="username" pattern="[a-z0-9_]+" title="Please Enter lowercase alphabets,digits or _" autocomplete="off" required>
+				<label for="username" class="labelName">
+					<span class="content">
+						Username
+					</span>
+				</label>
+			</div>		
+			<div class="container">
+				<p class="instruction">
+					Please Enter lowercase alphabets,digits or _ in Username
+				</p>				
+			</div>
+			<div class="form">
+				<input type="password" name="password" id="password" autocomplete="off" required>
+				<label for="password" class="labelName">
+					<span class="content">
+						Password
+					</span>
+				</label>
+			</div>
+			<div class="form admin">
+				<input type="text" name="adminCode" id="admin" autocomplete="off">
+				<label for="admin" class="labelName adminLabel">
+					<span class="content">
+						Admin Code
+					</span>
+				</label>
+			</div>		
+			<button type="submit" class="btn btn-outline-danger btn-lg btn-form">SIGN-UP</button>
+		</div>
+	</form>
+	<div class="container">
+		<a class="new-acc btn btn-md btn-info" href="/signin">Already Have Account</a>
+	</div>
+
+<%- include("../partials/footer")%>

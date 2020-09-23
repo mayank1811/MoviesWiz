@@ -1,0 +1,85 @@
+<%- include("../partials/header")%>
+
+<div class="container options1">
+	<div class="categories">
+		<a class="btn btn-sm btn-light" href="/movies/1">Latest Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/bollywood/1">Bollywood Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/hollywood/1">Hollywood Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/punjabi/1">Punjabi Movies</a>
+		<a class="btn btn-sm btn-light" href="/movies/animated/1">Animated Movies</a>
+		<div class="search-form">
+			<form action="/search" method="POST">
+				<input type="text" name="search" placeholder="Type to Search" autocomplete="off" required>
+				<button type="submit">
+					SEARCH
+				</button>
+			</form>			
+		</div>
+	</div>	
+</div>
+
+<header class="jumbotron strip font index-strip">
+	<%if(type!==0){%>
+		<h2 class="latestStrip"><%=type.toUpperCase()+" "%>MOVIES </h2>
+	<%}else{%>
+		<h2 class="latestStrip"><i class="fas fa-fire"></i> LATEST MOVIES</h2>
+	<%}%>
+</header>
+
+
+<div class="row text-center">
+	<% movies.forEach(function(movie){ %>
+		<div class="col-lg-2 col-md-4 col-sm-4 col-6 box">
+			<br>
+			<a href="/movies/show/<%=movie._id%>" class="download">
+				<div class="movie">
+					<img src="<%= movie.poster %>" class="imgPoster thumbnail-wrapper">
+					<span class="font"><%= movie.name %></span>
+					<br>
+					<span class="movieQuality font"><%= movie.quality %></span>
+					<div class="overlay">
+						<div class="download-icon">
+							<i class="fas fa-download"></i>
+						</div>
+						<div class="download-msg">
+							 DOWNLOAD
+						</div>
+					</div>
+				</div>
+
+			</a>
+		</div>
+	<% }) %>
+</div>
+<div class="container next">
+	<%if(type!==0){%>
+		<%if(onlyPage===0){%>
+			<%if(page===1){%>
+				<a href="/movies/<%=type%>/2"><i class="fas fa-arrow-right"></i></a>
+			<%}else if(page===totalPage){%>
+				<a href="/movies/<%=type%>/<%=totalPage-1%>"><i class="fas fa-arrow-left"></i></a>
+			<%}else{%>
+				<a href="/movies/<%=type%>/<%=page-1%>"><i class="fas fa-arrow-left"></i></a>
+				<a href="/movies/<%=type%>/<%=page+1%>"><i class="fas fa-arrow-right"></i></a>
+			<%}%>
+		<%}%>
+	<%}else{%>
+		<%if(onlyPage===0){%>
+			<%if(page===1){%>
+				<a href="/movies/2"><i class="fas fa-arrow-right"></i></a>
+			<%}else if(page===totalPage){%>
+				<a href="/movies/<%=totalPage-1%>"><i class="fas fa-arrow-left"></i></a>
+			<%}else{%>
+				<a href="/movies/<%=page-1%>"><i class="fas fa-arrow-left"></i></a>
+				<a href="/movies/<%=page+1%>"><i class="fas fa-arrow-right"></i></a>
+			<%}%>
+		<%}%>	
+	<%}%>
+</div>
+
+<%if(currentUser && currentUser.isAdmin){%>
+	<a class="btn btn-lg btn-warning newMovie" href="/movie/new">ADD NEW MOVIE</a>
+<%}%>
+
+	
+<%- include("../partials/footer")%>

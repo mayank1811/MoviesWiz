@@ -1,0 +1,38 @@
+<%- include("../partials/header")%>
+
+<header class="jumbotron strip font request">
+	<i class="far fa-envelope"></i> REQUEST PAGE
+</header>
+
+<div class="request-form">
+	<form method="POST" action="/contact">
+		<div class="formBody">
+			<div class="form">
+				<input type="text" name="request" id="comment" autocomplete="off" required>
+				<label for="comment" class="labelName">
+					<span class="content">
+						Request
+					</span>
+				</label>
+			</div>
+			
+			<button type="submit" class="btn btn-outline-danger btn-lg comment-form-btn">ADD REQUEST</button>
+		</div>
+	</form>
+	<hr class="request-line">	
+</div>
+
+
+<div class="container">
+	<%requests.forEach(function(request){%>
+		<div class="show-request">
+			<strong><%=request.author.username%></strong>
+			<span class="float-right"><%=moment(request.createdAt).fromNow()%></span>
+			<p>
+				<%=request.text%>
+			</p>	
+		</div>	
+	<%})%>
+</div>
+
+<%- include("../partials/footer")%>
