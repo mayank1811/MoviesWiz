@@ -23,7 +23,7 @@ var commentRoutes   = require("./routes/comments"),
 
 var app = express()
 
-mongoose.connect("mongodb://localhost/movieswiz",{
+mongoose.connect("mongodb+srv://Mayank:mickeymouse@6847@cluster0.gapgw.mongodb.net/movieswiz?retryWrites=true&w=majority",{
 	useNewUrlParser:true,
 	useUnifiedTopology:true
 })
@@ -66,6 +66,6 @@ app.use(commentRoutes)
 app.use(indexRoutes)
 app.use(movieRoutes)
 
-app.listen(3000,function(){
+app.listen(process.env.PORT,process.env.ID,function(){
 	console.log("Server has started")
 })
