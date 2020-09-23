@@ -31,7 +31,7 @@ router.get("/movies/:page",function(req,res){
 			}
 			
 		}
-	}).sort({createdAt:1})
+	}).sort({createdAt:-1})
 })
 
 
