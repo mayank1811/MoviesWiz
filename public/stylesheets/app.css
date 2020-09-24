@@ -539,6 +539,9 @@ iframe{
 	.categories a{
 		font-size:0.88rem;
 	}
+	.movieName{
+		font-size:2rem;
+	}
 }
 
 
